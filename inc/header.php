@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="en"> <!--<![endif]-->
     <head>
 
         <!-- Meta -->
@@ -55,7 +55,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3 col-xs-5 logo">
-                            <a href="index.php"><img src="admin/images/logo.png" class="img-responsive" alt=""/></a>
+                            <a href="index.php"><img src="admin/images/logo.jpg" class="img-responsive" alt=""/></a>
                         </div>
                         <div class="col-md-9 col-xs-7">
                             <div class="top-bar">
