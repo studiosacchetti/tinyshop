@@ -27,7 +27,34 @@ if (isset($_POST) & !empty($_POST)) {
     $phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
     $vat = filter_var($_POST['vat'], FILTER_SANITIZE_NUMBER_INT);
 
-    // update data in usermeta table
+    //var_dump($_FILES);
+    if (isset($_FILES) & !empty($_FILES)) {
+        $name = $_FILES['logo']['name'];
+        $size = $_FILES['logo']['size'];
+        $type = $_FILES['logo']['type'];
+        $tmp_name = $_FILES['logo']['tmp_name'];
+
+        $max_size = 10000000;
+        $extension = substr($name, strpos($name, '.') + 1);
+
+        if (isset($name) && !empty($name)) {
+            if (($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size <= $max_size) {
+                $location = "images/";
+                $filepath = $location . "logo.jpg";
+                if (move_uploaded_file($tmp_name, $filepath)) {
+                    $smsg = "Uploaded Successfully";
+                } else {
+                    $fmsg = "Failed to Upload File";
+                }
+            } else {
+                $fmsg = "Only JPG files are allowed and should be less that 1MB";
+            }
+        } else {
+            $fmsg = "Please Select a File";
+        }
+    }
+
+    // update data in config table
     $usql = "UPDATE config SET firstname='$fname', lastname='$lname', address1='$address1', address2='$address2', city='$city', state='$state',  zip='$zip', company='$company', phone='$phone', vat='$vat'";
     $ures = mysqli_query($connection, $usql) or die(mysqli_error($connection));
     if ($ures) {
@@ -53,7 +80,7 @@ include 'inc/nav.php';
             <h2>Edit Config</h2>
             <!--<p>Get the best kit for smooth shave</p>-->
         </div>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="container">
                 <?php if (isset($fmsg)) { ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
                 <?php if (isset($smsg)) { ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
@@ -182,8 +209,14 @@ include 'inc/nav.php';
                                        echo $vat;
                                    }
                                    ?>" type="text">
+                            <div class="clearfix space20"></div>
+                            <label>Product Image</label>
+                            <br>
+                            <img src="images/logo.jpg" width="200px" height="100px">                            
+                            <input type="file" name="logo" id="logo">
+                            <p class="help-block">Only jpg/png are allowed.</p>
                             <div class="space30"></div>
-                            <input type="submit" class="button btn-lg" value="Update Address">
+                            <input type="submit" class="button btn-lg" value="Update Config">
                         </div>
                     </div>
 
