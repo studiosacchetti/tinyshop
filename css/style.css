@@ -298,7 +298,7 @@ a:hover {
 
 .navbar-nav > li > a {
     padding:0;
-    font-family: 'roboto_slabregular';
+    font-family: 'roboto_slab',regular;
     font-size:14px;
     line-height:14px;
     color:#ffffff;
@@ -3408,7 +3408,7 @@ blockquote.style4 p {
 }
 
 #header2 {
-    padding:25px 0 0;
+    padding:15px 0 0;
     border-bottom:1px solid #eaeaea;
 }
 
@@ -3542,7 +3542,7 @@ blockquote.style4 p {
     display: table;
     width: 100%;
     position: relative;
-    top: 35px;
+    top: 15px;
     z-index:888;
 }
 
