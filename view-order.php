@@ -22,7 +22,7 @@ if (isset($_SESSION['cart'])) {
         <div class="container">
             <div class="row">
                 <div class="page_header text-center">
-                    <h2>My Account</h2>
+                    <h2>My Order</h2>
                 </div>
                 <div class="col-md-12">
 
@@ -113,12 +113,12 @@ if (isset($_SESSION['cart'])) {
                     <br>
 
                     <div class="ma-address">
-                        <h3>My Addresses</h3>
+                        <h3>My Account Details</h3>
                         <p>The following addresses will be used on the checkout page by default.</p>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <h4>My Address <a href="edit-address.php">Edit</a></h4>
+                                <h4>My Details <a href="edit-detail.php">Edit</a></h4>
                                 <?php
                                 $csql = "SELECT u1.firstname, u1.lastname, u1.address1, u1.address2, u1.city, u1.state, u1.country, u1.company, u.email, u1.phone, u1.zip FROM users u JOIN usersmeta u1 WHERE u.id=u1.uid AND u.id=$uid";
                                 $cres = mysqli_query($connection, $csql);
